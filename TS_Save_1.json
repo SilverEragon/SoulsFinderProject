@@ -1,9 +1,11 @@
 {
   "SaveName": "SoulsFinderAlpha",
-  "EpochTime": 1694825692,
-  "Date": "9/16/2023 2:54:52 AM",
+  "EpochTime": 1694994768,
+  "Date": "9/18/2023 1:52:48 AM",
   "VersionNumber": "v13.2.2",
   "GameMode": "Custom",
+  "GameType": "",
+  "GameComplexity": "",
   "Tags": [],
   "Gravity": 0.5,
   "PlayArea": 0.5,
@@ -214,59 +216,8 @@
   "DecalPallet": [],
   "LuaScript": "--[[ Lua code. See documentation: https://api.tabletopsimulator.com/ --]]\n\n--[[ The onLoad event is called after the game save finishes loading. --]]\nfunction onLoad()\n    --[[ print('onLoad!') --]]\nend\n\n--[[ The onUpdate event is called once per frame. --]]\nfunction onUpdate()\n    --[[ print('onUpdate loop!') --]]\nend",
   "LuaScriptState": "",
-  "XmlUI": "<!-- Xml UI. See documentation: https://api.tabletopsimulator.com/ui/introUI/ -->",
+  "XmlUI": "function onLoad()\r\n    self.createInput({\r\n        input_function = \"input_func\",\r\n        function_owner = self,\r\n        label          = \"Gold\",\r\n        alignment      = 4,\r\n        position       = {x=0, y=1, z=0},\r\n        width          = 800,\r\n        height         = 300,\r\n        font_size      = 323,\r\n        validation     = 2,\r\n    })\r\nend\r\n\r\nfunction input_func(obj, color, input, stillEditing)\r\n    print(input)\r\n    if not stillEditing then\r\n        print(\"Finished editing.\")\r\n    end\r\nend",
   "ObjectStates": [
-    {
-      "GUID": "dcffd8",
-      "Name": "Custom_Board",
-      "Transform": {
-        "posX": -20.2174816,
-        "posY": 0.9894171,
-        "posZ": -7.134452,
-        "rotX": -1.08291533E-05,
-        "rotY": 180.000168,
-        "rotZ": -7.312211E-08,
-        "scaleX": 0.5000005,
-        "scaleY": 0.5000005,
-        "scaleZ": 0.5000005
-      },
-      "Nickname": "Character Sheet",
-      "Description": "Sheet used for characters\n",
-      "GMNotes": "",
-      "AltLookAngle": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "ColorDiffuse": {
-        "r": 0.7867647,
-        "g": 0.7867647,
-        "b": 0.7867647
-      },
-      "LayoutGroupSortIndex": 0,
-      "Value": 0,
-      "Locked": false,
-      "Grid": true,
-      "Snap": true,
-      "IgnoreFoW": false,
-      "MeasureMovement": false,
-      "DragSelectable": true,
-      "Autoraise": true,
-      "Sticky": true,
-      "Tooltip": true,
-      "GridProjection": false,
-      "HideWhenFaceDown": false,
-      "Hands": false,
-      "CustomImage": {
-        "ImageURL": "http://cloud-3.steamusercontent.com/ugc/2111681065218584984/035555435E31DB5B35C7A72F3971BEB120990B5D/",
-        "ImageSecondaryURL": "",
-        "ImageScalar": 1.0,
-        "WidthScale": 0.7702206
-      },
-      "LuaScript": "",
-      "LuaScriptState": "",
-      "XmlUI": ""
-    },
     {
       "GUID": "74b506",
       "Name": "HandTrigger",
@@ -642,6 +593,57 @@
       "LuaScript": "",
       "LuaScriptState": "",
       "XmlUI": ""
+    },
+    {
+      "GUID": "dcffd8",
+      "Name": "Custom_Board",
+      "Transform": {
+        "posX": -17.41607,
+        "posY": 1.021776,
+        "posZ": -3.86817861,
+        "rotX": -1.61484536E-06,
+        "rotY": 179.978226,
+        "rotZ": -3.935094E-08,
+        "scaleX": 1.05000007,
+        "scaleY": 1.05000007,
+        "scaleZ": 1.05000007
+      },
+      "Nickname": "Character Sheet",
+      "Description": "Sheet used for characters\n",
+      "GMNotes": "",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.7867647,
+        "g": 0.7867647,
+        "b": 0.7867647
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": false,
+      "CustomImage": {
+        "ImageURL": "http://cloud-3.steamusercontent.com/ugc/2111681065218584984/035555435E31DB5B35C7A72F3971BEB120990B5D/",
+        "ImageSecondaryURL": "",
+        "ImageScalar": 1.0,
+        "WidthScale": 0.7702206
+      },
+      "LuaScript": "function onLoad()\r\n    self.createInput({\r\n        input_function = \"charac_name\",\r\n        function_owner = self,\r\n        label          = \"name of a character\",\r\n        alignment      = 4,\r\n        position       = {x=-1.25, y=0.65, z=-7.5},\n        width          = 2000,\r\n        height         = 300,\n        font_color     = {r=0, g=0, b=0},\n        tooltip        = \"Name of character\",\r\n        font_size      = 225,\r\n        validation     = 6,\n        tab            = 2,\r\n    })\n    self.createInput({\r\n        input_function = \"player_name\",\r\n        function_owner = self,\r\n        label          = \"name of a player\",\r\n        alignment      = 4,\r\n        position       = {x=-1.25, y=0.65, z=-6.8},\n        width          = 2000,\r\n        height         = 180,\n        font_color     = {r=0, g=0, b=0},\n        tooltip        = \"Name of a player\",\r\n        font_size      = 155,\r\n        validation     = 6,\n        tab            = 2,\r\n    })\n    self.createInput({\r\n        input_function = \"exp\",\r\n        function_owner = self,\r\n        label          = \"xp_Values\",\r\n        alignment      = 4,\r\n        position       = {x=-1.25, y=0.65, z=-6.35},\n        width          = 2000,\r\n        height         = 90,\n        font_color     = {r=0, g=0, b=0},\n        tooltip        = \"xp value\",\r\n        font_size      = 65,\r\n        validation     = 3,\n        tab            = 2,\r\n    })\r\nend\r\n\r\nfunction charac_name(obj, color, input, stillEditing)\r\r\r\nend\n\nfunction player_name(obj, color, input, stillEditing)\r\r\r\nend\n\nfunction exp(obj, color, input, stillEditing)\nend",
+      "LuaScriptState": "",
+      "XmlUI": "function onLoad()\r\n    self.createInput({\r\n        input_function = \"input_func\",\r\n        function_owner = self,\r\n        label          = \"Gold\",\r\n        alignment      = 4,\r\n        position       = {x=0, y=1, z=0},\r\n        width          = 800,\r\n        height         = 300,\r\n        font_size      = 323,\r\n        validation     = 2,\r\n    })\r\nend\r\n\r\nfunction input_func(obj, color, input, stillEditing)\r\n    print(input)\r\n    if not stillEditing then\r\n        print(\"Finished editing.\")\r\n    end\r\nend"
     }
   ]
 }
